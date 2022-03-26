@@ -225,7 +225,7 @@ MonoBehaviour:
   countText: {fileID: 1874291359}
   winTextObject: {fileID: 1160453923}
   accelerationTime: 10
-  maxSpeed: 15
+  maxSpeed: 5
 --- !u!114 &411081472
 MonoBehaviour:
   m_ObjectHideFlags: 0

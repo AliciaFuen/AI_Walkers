@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public int count1;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject winTextObjectDraw;
 
     public float speed = 0;
     private float movementX;
@@ -25,12 +26,16 @@ public class PlayerController : MonoBehaviour
 
         SetCountText();
         winTextObject.SetActive(false);
+        winTextObjectDraw.SetActive(false);
     }
 
     void SetCountText(){
         countText.text = "Count team1: " + count1.ToString();
         
-        if(Coin==0 && count1>RM.count2){
+        if(count1==Coin && Coin == 0){
+            winTextObjectDraw.SetActive(true);
+        }
+        else if(count1>RM.count2 && Coin==0){
             winTextObject.SetActive(true);
         }
     }

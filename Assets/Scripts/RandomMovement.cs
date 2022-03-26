@@ -12,6 +12,7 @@ public class RandomMovement : MonoBehaviour
     public int count2;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject winTextObjectDraw;
 
     public float accelerationTime = 2f;
     public float maxSpeed = 5f;
@@ -25,12 +26,16 @@ public class RandomMovement : MonoBehaviour
 
         SetCountText();
         winTextObject.SetActive(false);
+        winTextObjectDraw.SetActive(false);
      }
 
      void SetCountText(){
         countText.text = "Count team2: " + count2.ToString();
         
-        if(PC.Coin==0 && count2>PC.count1){
+        if(count2==PC.count1 && PC.Coin == 0){
+            winTextObjectDraw.SetActive(true);
+        }
+        else if(count2>PC.count1 && PC.Coin==0){
             winTextObject.SetActive(true);
         }
     }
@@ -42,7 +47,7 @@ public class RandomMovement : MonoBehaviour
        timeLeft -= Time.deltaTime;
        if(timeLeft <= 0)
        {
-         movement = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+         movement = new Vector3(Random.Range(-1f, 1f), 0.0f, Random.Range(-1f, 1f));
          timeLeft += accelerationTime;
        }
      }

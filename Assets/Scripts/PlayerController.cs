@@ -6,12 +6,14 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 0;
+    private Rigidbody rb;
+    public RandomMovement RM;
+    public int Coin=10;
+    public int count1;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
 
-    private Rigidbody rb;
-    private int count1;
+    public float speed = 0;
     private float movementX;
     private float movementY;
 
@@ -25,19 +27,20 @@ public class PlayerController : MonoBehaviour
         winTextObject.SetActive(false);
     }
 
+    void SetCountText(){
+        countText.text = "Count team1: " + count1.ToString();
+        
+        if(Coin==0 && count1>RM.count2){
+            winTextObject.SetActive(true);
+        }
+    }
+
     void OnMove(InputValue movementValue){
         Vector2 movementVector = movementValue.Get<Vector2>();
 
         movementX = movementVector.x;
         movementY = movementVector.y;
 
-    }
-
-    void SetCountText(){
-        countText.text = "Count team1: " + count1.ToString();
-        if(count1 >=10){
-            winTextObject.SetActive(true);
-        }
     }
 
     void FixedUpdate(){
@@ -51,12 +54,9 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count1 = count1 + 1;
-
+            Coin-=1;
             SetCountText();
         }   
-
     }
 
 }
-
-

@@ -29,10 +29,10 @@ public class PlayerController : MonoBehaviour
         winTextObjectDraw.SetActive(false);
     }
 
-    void SetCountText(){
+    private void SetCountText(){
         countText.text = "Count team1: " + count1.ToString();
         
-        if(count1==Coin && Coin == 0){
+        if(count1==RM.count2 && Coin == 0){
             winTextObjectDraw.SetActive(true);
         }
         else if(count1>RM.count2 && Coin==0){

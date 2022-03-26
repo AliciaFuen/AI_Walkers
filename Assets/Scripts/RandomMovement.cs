@@ -29,7 +29,7 @@ public class RandomMovement : MonoBehaviour
         winTextObjectDraw.SetActive(false);
      }
 
-     void SetCountText(){
+     private void SetCountText(){
         countText.text = "Count team2: " + count2.ToString();
         
         if(count2==PC.count1 && PC.Coin == 0){
